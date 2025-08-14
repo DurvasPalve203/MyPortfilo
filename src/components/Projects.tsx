@@ -12,13 +12,13 @@ export const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'E-Commerce Platform',
-      description: 'A full-featured e-commerce platform with React, Node.js, and Stripe integration. Features include user authentication, product management, and real-time order tracking.',
+      title: 'Future Tech Store',
+      description: 'A sleek, fully responsive Task Scheduler built with React, Tailwind CSS, and Vite ',
       image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop',
-      category: 'Full-Stack',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
+      category: 'Frontend',
+      technologies: ['React', 'Tailwind CSS', 'Vite',],
       githubUrl: '#',
-      liveUrl: '#',
+      liveUrl: 'https://ftstore.netlify.app/',
       featured: true
     },
     {
@@ -129,12 +129,17 @@ export const Projects = () => {
                 
                 {/* Project Links Overlay */}
                 <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-smooth">
-                  <Button size="icon" variant="glass" className="h-8 w-8">
-                    <Github className="h-4 w-4" />
-                  </Button>
-                  <Button size="icon" variant="glass" className="h-8 w-8">
-                    <ExternalLink className="h-4 w-4" />
-                  </Button>
+                 <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+  <Button size="icon" variant="glass" className="h-8 w-8">
+    <Github className="h-4 w-4" />
+  </Button>
+</a>
+<a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+  <Button size="icon" variant="glass" className="h-8 w-8">
+    <ExternalLink className="h-4 w-4" />
+  </Button>
+</a>
+
                 </div>
 
                 {/* Featured Badge */}
@@ -167,14 +172,19 @@ export const Projects = () => {
 
               <CardFooter className="p-6 pt-0">
                 <div className="flex gap-3 w-full">
-                  <Button variant="outline" size="sm" className="flex-1">
-                    <Github className="h-4 w-4 mr-2" />
-                    Code
-                  </Button>
-                  <Button variant="default" size="sm" className="flex-1">
-                    <ExternalLink className="h-4 w-4 mr-2" />
-                    Live Demo
-                  </Button>
+                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex-1">
+  <Button variant="outline" size="sm" className="w-full">
+    <Github className="h-4 w-4 mr-2" />
+    Code
+  </Button>
+</a>
+<a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex-1">
+  <Button variant="default" size="sm" className="w-full">
+    <ExternalLink className="h-4 w-4 mr-2" />
+    Live Demo
+  </Button>
+</a>
+
                 </div>
               </CardFooter>
             </Card>

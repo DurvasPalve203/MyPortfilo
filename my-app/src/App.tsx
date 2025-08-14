@@ -1,10 +1,27 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+
+  // Inject Google Analytics script
+  useEffect(() => {
+    const script1 = document.createElement('script')
+    script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-N6Q2JVGJCW'
+    script1.async = true
+    document.head.appendChild(script1)
+
+    const script2 = document.createElement('script')
+    script2.innerHTML = `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-N6Q2JVGJCW');
+    `
+    document.head.appendChild(script2)
+  }, [])
 
   return (
     <>
