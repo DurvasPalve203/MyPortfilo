@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 
 export const Hero = () => {
@@ -63,31 +62,56 @@ export const Hero = () => {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button variant="hero" size="xl" className="group">
+            <div className="flex flex-wrap items-center gap-3">
+              {/* View My Work */}
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-white hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-primary"
+              >
                 View My Work
-                <ArrowDown className="ml-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
-              </Button>
-              <Button variant="glass" size="xl">
+              </a>
+
+              {/* Download Resume */}
+              <a
+                href="/resume.pdf"
+                download="Durvas-Palve-Resume.pdf"
+                className="inline-flex items-center gap-2 rounded-md border px-4 py-2 hover:bg-muted focus:outline-none focus:ring-2 focus:ring-primary"
+              >
                 Download Resume
-              </Button>
+              </a>
             </div>
 
-            {/* Social Links */}
-            <div className="flex gap-6 justify-center lg:justify-start">
-              <Button variant="ghost" size="icon" className="hover:text-primary hover:scale-110">
+            {/* Social Links (updated) */}
+            <div className="mt-4 flex items-center gap-4">
+              <a
+                href="https://github.com/DurvasPalve203"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="transition hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary rounded"
+              >
                 <Github className="h-6 w-6" />
-              </Button>
-              <Button variant="ghost" size="icon" className="hover:text-primary hover:scale-110">
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/durvas-palve-2b4576261"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="transition hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary rounded"
+              >
                 <Linkedin className="h-6 w-6" />
-              </Button>
-              <Button variant="ghost" size="icon" className="hover:text-primary hover:scale-110">
+              </a>
+
+              <a
+                href="mailto:YOUR_EMAIL_HERE"
+                aria-label="Email"
+                className="transition hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary rounded"
+              >
                 <Mail className="h-6 w-6" />
-              </Button>
+              </a>
             </div>
           </div>
-
-          {/* Removed the image section */}
         </div>
 
         {/* Scroll Indicator */}

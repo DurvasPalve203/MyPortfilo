@@ -24,17 +24,21 @@ export const Navigation = () => {
 
   const navItems = [
     { name: 'Home', path: '/' },
-    //{ name: 'About', path: '/about' },
-    //{ name: 'Projects', path: '/projects' },
+    // { name: 'About', path: '/about' },
+    // { name: 'Projects', path: '/projects' },
     { name: 'Blog', path: '/blog' },
     { name: 'Resume', path: '/resume' },
     { name: 'Contact', path: '/contact' },
   ];
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-smooth ${
-      isScrolled ? 'bg-background/80 backdrop-blur-lg border-b border-border' : 'bg-transparent'
-    }`}>
+    <nav
+      className={`fixed top-0 w-full z-50 transition-smooth ${
+        isScrolled
+          ? 'bg-background/80 backdrop-blur-lg border-b border-border'
+          : 'bg-transparent'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -49,7 +53,9 @@ export const Navigation = () => {
                 key={item.name}
                 to={item.path}
                 className={`transition-smooth hover:text-primary ${
-                  location.pathname === item.path ? 'text-primary font-medium' : 'text-muted-foreground'
+                  location.pathname === item.path
+                    ? 'text-primary font-medium'
+                    : 'text-muted-foreground'
                 }`}
               >
                 {item.name}
@@ -65,7 +71,11 @@ export const Navigation = () => {
               onClick={toggleTheme}
               className="hover:bg-accent/20"
             >
-              {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              {isDark ? (
+                <Sun className="h-5 w-5" />
+              ) : (
+                <Moon className="h-5 w-5" />
+              )}
             </Button>
 
             {/* Mobile Menu Button */}
@@ -75,7 +85,11 @@ export const Navigation = () => {
               className="md:hidden"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {isMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
             </Button>
           </div>
         </div>
