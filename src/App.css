@@ -40,3 +40,88 @@
 .read-the-docs {
   color: #888;
 }
+
+/* === Shiny Hover Effects === */
+
+/* Shiny Button */
+.btn-shiny {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate; /* contain pseudo element */
+  transition: transform 0.2s ease;
+}
+
+.btn-shiny span {
+  position: relative;
+  z-index: 10; /* text stays above overlay */
+}
+
+.btn-shiny::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0.1) 60%,
+    transparent 100%
+  );
+  transition: transform 0.5s ease;
+  z-index: 1;
+  pointer-events: none; /* don't block clicks */
+}
+
+.btn-shiny:hover::before {
+  transform: translateX(0);
+}
+
+.btn-shiny:hover {
+  transform: translateY(-1px);
+}
+
+/* Shiny Card */
+.card-shiny {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.card-shiny::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.05) 60%,
+    transparent 100%
+  );
+  transition: transform 0.8s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.card-shiny:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+}
+
+.card-shiny:hover::before {
+  transform: translateX(0);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .btn-shiny::before,
+  .card-shiny::before {
+    transition: none;
+    transform: none;
+  }
+  .btn-shiny:hover,
+  .card-shiny:hover {
+    transform: none;
+  }
+}

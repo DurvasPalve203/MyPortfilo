@@ -66,18 +66,18 @@ export const Hero = () => {
               {/* View My Work */}
               <a
                 href="#projects"
-                className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-white hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-primary"
+                className="btn-shiny inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-primary"
               >
-                View My Work
+                <span>View My Work</span>
               </a>
 
               {/* Download Resume */}
               <a
                 href="/resume.pdf"
                 download="Durvas-Palve-Resume.pdf"
-                className="inline-flex items-center gap-2 rounded-md border px-4 py-2 hover:bg-muted focus:outline-none focus:ring-2 focus:ring-primary"
+                className="btn-shiny inline-flex items-center gap-2 rounded-md border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary hover:bg-muted"
               >
-                Download Resume
+                <span>Download Resume</span>
               </a>
             </div>
 

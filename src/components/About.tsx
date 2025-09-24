@@ -122,7 +122,7 @@ export const About = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, index) => (
-              <Card key={index} className="card-gradient border-border/50 hover:shadow-card transition-smooth group">
+              <Card key={index} className="card-shiny card-gradient border-border/50 transition-smooth group">
                 <CardContent className="p-6 text-center">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-smooth">
                     <service.icon className="h-6 w-6 text-primary" />

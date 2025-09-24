@@ -7,6 +7,11 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
+const encode = (data: Record<string, string>) =>
+  Object.keys(data)
+    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&');
+
 export const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -22,7 +27,7 @@ export const Contact = () => {
       icon: Mail,
       title: 'Email',
       value: 'durvaspalve18@gmail.com',
-      link: 'mailto:john.doe@example.com'
+      link: 'mailto:durvaspalve18@gmail.com'
     },
     {
       icon: Phone,
@@ -33,7 +38,7 @@ export const Contact = () => {
     {
       icon: MapPin,
       title: 'Location',
-      value: 'Pune,Maharastra',
+      value: 'Pune, Maharastra',
       link: 'https://maps.google.com'
     }
   ];
@@ -45,26 +50,37 @@ export const Contact = () => {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      // Here you would integrate with Supabase to store the contact form submission
-      // For now, we'll simulate a successful submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      toast({
-        title: "Message sent!",
-        description: "Thank you for your message. I'll get back to you soon.",
+      // Submit to Netlify Forms
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({
+          'form-name': 'contact',
+          ...formData
+        })
       });
-      
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    } catch (error) {
+
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(text || 'Failed to send');
+      }
+
       toast({
-        title: "Error",
-        description: "Failed to send message. Please try again.",
-        variant: "destructive",
+        title: 'Message sent!',
+        description: "Thanks for reaching out — I'll get back to you soon.",
+      });
+
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch (error: any) {
+      toast({
+        title: 'Error',
+        description: error?.message || 'Failed to send message. Please try again.',
+        variant: 'destructive',
       });
     } finally {
       setIsSubmitting(false);
@@ -80,7 +96,7 @@ export const Contact = () => {
             Get In <span className="text-gradient">Touch</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Have a project in mind or just want to chat? I'd love to hear from you. 
+            Have a project in mind or just want to chat? I'd love to hear from you.
             Let's create something amazing together.
           </p>
         </div>
@@ -107,12 +123,18 @@ export const Contact = () => {
                       </div>
                       <div>
                         <h4 className="font-semibold">{info.title}</h4>
-                        <a 
-                          href={info.link}
-                          className="text-muted-foreground hover:text-primary transition-smooth"
-                        >
-                          {info.value}
-                        </a>
+                        {info.link ? (
+                          <a 
+                            href={info.link}
+                            className="text-muted-foreground hover:text-primary transition-smooth"
+                            target={info.link.startsWith('http') ? '_blank' : undefined}
+                            rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                          >
+                            {info.value}
+                          </a>
+                        ) : (
+                          <span className="text-muted-foreground">{info.value}</span>
+                        )}
                       </div>
                     </div>
                   </CardContent>
@@ -136,7 +158,15 @@ export const Contact = () => {
               <CardTitle className="text-2xl">Send a Message</CardTitle>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form
+                name="contact"
+                data-netlify="true"
+                onSubmit={handleSubmit}
+                className="space-y-6"
+              >
+                {/* Netlify Forms needs this hidden input in the request body */}
+                <input type="hidden" name="form-name" value="contact" />
+
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="name">Name *</Label>
