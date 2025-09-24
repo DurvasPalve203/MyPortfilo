@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowDown, Github, Linkedin, Mail, Instagram } from 'lucide-react';
 
 export const Hero = () => {
   const [currentTitle, setCurrentTitle] = useState('');
@@ -81,7 +81,7 @@ export const Hero = () => {
               </a>
             </div>
 
-            {/* Social Links (updated) */}
+            {/* Social Links (with Instagram) */}
             <div className="mt-4 flex items-center gap-4">
               <a
                 href="https://github.com/DurvasPalve203"
@@ -104,7 +104,17 @@ export const Hero = () => {
               </a>
 
               <a
-                href="mailto:YOUR_EMAIL_HERE"
+                href="https://www.instagram.com/durvas_palve_203"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="transition hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary rounded"
+              >
+                <Instagram className="h-6 w-6" />
+              </a>
+
+              <a
+                href="mailto:durvaspalve18@gmail.com"
                 aria-label="Email"
                 className="transition hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary rounded"
               >
