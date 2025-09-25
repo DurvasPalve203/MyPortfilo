@@ -125,3 +125,28 @@
     transform: none;
   }
 }
+
+/* Make shiny overlays animate only on devices with hover */
+@media (hover: hover) and (pointer: fine) {
+  .btn-shiny::before,
+  .card-shiny::before {
+    transition: transform 0.5s ease;
+  }
+  .btn-shiny:hover::before,
+  .card-shiny:hover::before {
+    transform: translateX(0);
+  }
+}
+
+/* On touch devices, keep things snappy and avoid heavy hover animations */
+@media (hover: none) {
+  .btn-shiny::before,
+  .card-shiny::before {
+    transform: none !important;
+  }
+  .btn-shiny:hover,
+  .card-shiny:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}

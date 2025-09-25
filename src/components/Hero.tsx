@@ -63,15 +63,12 @@ export const Hero = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap items-center gap-3">
-              {/* View My Work */}
               <a
                 href="#projects"
                 className="btn-shiny inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <span>View My Work</span>
               </a>
-
-              {/* Download Resume */}
               <a
                 href="/resume.pdf"
                 download="Durvas-Palve-Resume.pdf"
@@ -81,7 +78,7 @@ export const Hero = () => {
               </a>
             </div>
 
-            {/* Social Links (with Instagram) */}
+            {/* Social Links */}
             <div className="mt-4 flex items-center gap-4">
               <a
                 href="https://github.com/DurvasPalve203"

@@ -62,17 +62,14 @@ export const About = () => {
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
                 My journey into web development started 2 years ago when I discovered the power 
-                of code to bring ideas to life. What began as curiosity quickly became a passion 
-                for creating digital experiences that matter.
+                of code to bring ideas to life...
               </p>
               <p>
                 I specialize in full-stack development with a focus on React, Node.js, and modern 
-                web technologies. I believe in writing clean, maintainable code and creating 
-                user-centered designs that solve real problems.
+                web technologies...
               </p>
               <p>
-                When I'm not coding, you'll find me exploring new technologies, contributing to 
-                open-source projects, or mentoring aspiring developers in my community.
+                When I'm not coding, you'll find me exploring new technologies...
               </p>
             </div>
 
